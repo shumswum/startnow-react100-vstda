@@ -107,7 +107,7 @@ class Todo extends Component {
               </select>
             </div>
           </div>
-          <button className="save-button btn" onClick={() => this.handleSave()}>
+          <button className="save-button btn update-todo" onClick={() => this.handleSave()}>
             Save
           </button>
         </div>
@@ -128,17 +128,17 @@ class Todo extends Component {
         <div className="my-icons">
           <button
             type="button"
-            className="btn btn-default pencil"
+            className="btn btn-default pencil edit-todo"
             onClick={() => this.handleEdit()}
           >
-            <span className="glyphicon glyphicon-pencil edit-todo" aria-hidden="true" />
+            <span className="glyphicon glyphicon-pencil" aria-hidden="true" />
           </button>
           <button
             type="button"
-            className="btn btn-default trash"
+            className="btn btn-default trash delete-todo"
             onClick={() => this.props.handleDeleteTodo(this.props.index)}
           >
-            <span className="glyphicon glyphicon-trash delete-todo" aria-hidden="true" />
+            <span className="glyphicon glyphicon-trash" aria-hidden="true" />
           </button>
         </div>
       </div>

@@ -176,13 +176,13 @@ strong {
 }
 .edit-red {
   background-color: pink;
+  padding-top: 1.5%;
 }
 .edit-green {
   background-color: lightgreen;
+  padding-top: 1.5%;
 }
 .edit-yellow {
   background-color: #fceabb;
-}
-.edit-textarea {
-  margin-top: 1.5%;
+  padding-top: 1.5%;
 }

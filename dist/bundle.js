@@ -22231,7 +22231,8 @@
 	    _this.state = {
 	      textarea: "",
 	      priority: "",
-	      todoList: []
+	      todoList: [],
+	      hasTodos: false
 	    };
 
 	    _this.handleTextArea = _this.handleTextArea.bind(_this);
@@ -22240,6 +22241,7 @@
 	    _this.handleAddTodo = _this.handleAddTodo.bind(_this);
 	    _this.handleDeleteTodo = _this.handleDeleteTodo.bind(_this);
 	    _this.handleSave = _this.handleSave.bind(_this);
+	    _this.renderWelcome = _this.renderWelcome.bind(_this);
 	    return _this;
 	  }
 
@@ -22270,7 +22272,8 @@
 	      this.setState({
 	        todoList: todoList,
 	        description: "",
-	        priority: "9"
+	        priority: "9",
+	        hasTodos: true
 	      });
 	    }
 	  }, {
@@ -22288,6 +22291,28 @@
 	      todoList[index] = payload;
 
 	      this.setState({ todoList: todoList });
+	    }
+	  }, {
+	    key: "renderWelcome",
+	    value: function renderWelcome() {
+	      if (this.state.todoList.length) {
+	        return;
+	      } else {
+	        return _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(
+	            "strong",
+	            null,
+	            "Welcome to Very Simple Todo App!"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            { id: "para" },
+	            "Get started now by adding a new todo on the left."
+	          )
+	        );
+	      }
 	    }
 	  }, {
 	    key: "renderTodos",
@@ -22353,7 +22378,7 @@
 	              _react2.default.createElement("textarea", {
 	                value: this.state.textarea,
 	                onChange: this.handleTextArea,
-	                className: "form-control",
+	                className: "form-control create-todo-text",
 	                id: "exampleTextarea",
 	                rows: "3"
 	              })
@@ -22420,16 +22445,7 @@
 	                "View Todos"
 	              )
 	            ),
-	            _react2.default.createElement(
-	              "strong",
-	              null,
-	              "Welcome to Very Simple Todo App!"
-	            ),
-	            _react2.default.createElement(
-	              "p",
-	              { id: "para" },
-	              "Get started now by adding a new todo on the left."
-	            ),
+	            this.renderWelcome(this.state.hasTodos),
 	            this.renderTodos()
 	          )
 	        )
@@ -22635,7 +22651,7 @@
 	          ),
 	          _react2.default.createElement(
 	            "button",
-	            { className: "save-button btn", onClick: function onClick() {
+	            { className: "save-button btn update-todo", onClick: function onClick() {
 	                return _this2.handleSave();
 	              } },
 	            "Save"
@@ -22668,23 +22684,23 @@
 	            "button",
 	            {
 	              type: "button",
-	              className: "btn btn-default pencil",
+	              className: "btn btn-default pencil edit-todo",
 	              onClick: function onClick() {
 	                return _this2.handleEdit();
 	              }
 	            },
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-pencil edit-todo", "aria-hidden": "true" })
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-pencil", "aria-hidden": "true" })
 	          ),
 	          _react2.default.createElement(
 	            "button",
 	            {
 	              type: "button",
-	              className: "btn btn-default trash",
+	              className: "btn btn-default trash delete-todo",
 	              onClick: function onClick() {
 	                return _this2.props.handleDeleteTodo(_this2.props.index);
 	              }
 	            },
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-trash delete-todo", "aria-hidden": "true" })
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-trash", "aria-hidden": "true" })
 	          )
 	        )
 	      );

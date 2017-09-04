@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       textarea: "",
       priority: "",
-      todoList: []
+      todoList: [],
+      hasTodos: false
     };
 
     this.handleTextArea = this.handleTextArea.bind(this);
@@ -18,6 +19,7 @@ class App extends Component {
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.renderWelcome = this.renderWelcome.bind(this);
   }
 
   handleTextArea(event) {
@@ -43,7 +45,8 @@ class App extends Component {
     this.setState({
       todoList,
       description: "",
-      priority: "9"
+      priority: "9",
+      hasTodos: true
     });
   }
 
@@ -59,6 +62,19 @@ class App extends Component {
     todoList[index] = payload;
 
     this.setState({todoList});
+  }
+
+  renderWelcome() {
+    if(this.state.todoList.length) {
+      return;
+    } else {
+    return (
+      <div>
+        <strong>Welcome to Very Simple Todo App!</strong>
+        <p id="para">Get started now by adding a new todo on the left.</p>
+      </div>
+    );
+    }
   }
 
   renderTodos() {
@@ -95,7 +111,7 @@ class App extends Component {
               <textarea
                 value={this.state.textarea}
                 onChange={this.handleTextArea}
-                className="form-control"
+                className="form-control create-todo-text"
                 id="exampleTextarea"
                 rows="3"
               />
@@ -126,8 +142,7 @@ class App extends Component {
             <div className="panel-heading">
               <h3 className="panel-title">View Todos</h3>
             </div>
-            <strong>Welcome to Very Simple Todo App!</strong>
-            <p id="para">Get started now by adding a new todo on the left.</p>
+            {this.renderWelcome(this.state.hasTodos)}
             {this.renderTodos()}
           </div>
         </div>
