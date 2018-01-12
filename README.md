@@ -1,6 +1,6 @@
 # VSTDA
 
-Very simple to do app using vanilla React, bootstrap, HTML, CSS.
+Very simple to do app to list all the fun things we want to do in life. This was built using vanilla React, bootstrap, HTML, and CSS.
 
 # How to use...
 
