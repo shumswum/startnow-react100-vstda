@@ -5,8 +5,10 @@ Very simple to do app to list all the fun things we want to do in life. This was
 # How to use...
 
 npm install
-npm run build
-npm start
+
+npm run build 
+
+npm start 
 
 # You can try this...
 
